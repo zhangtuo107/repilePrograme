@@ -4,11 +4,8 @@ var cheerio = require('cheerio');
 var request = require('request');
 var i = 0;
 var url = 'http://www.ss.pku.edu.cn/index.php/newscenter/news/2391';
-function fetchPage(x){
-    startRequest(x);
-};
 function startRequest(x){
-    http.get(x, function(res){
+    http.get(x, function(res){  
         var html = '';
         var titles = [];
         res.setEncoding('utf-8');
@@ -70,4 +67,4 @@ function savedImg($, news_title){
         request(img_src).pipe(fs.createWriteStream('./image/'+news_title + '---' + img_fileName))
     })
 };
-fetchPage(url);
+startRequest(url);
